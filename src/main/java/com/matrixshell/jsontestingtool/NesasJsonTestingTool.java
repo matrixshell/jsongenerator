@@ -36,12 +36,12 @@ public class NesasJsonTestingTool {
 
 	public NesasJsonTestingTool(Integer levels) {
 		System.out.println("levels constructor");
-		this.levels = Optional.of(levels-1);
+		this.levels = Optional.of(levels - 1);
 	}
 
 	public NesasJsonTestingTool(boolean completeArrDuplication, int levels) {
 		this.completeArrDuplication = completeArrDuplication;
-		this.levels = Optional.of(levels-1);
+		this.levels = Optional.of(levels - 1);
 	}
 
 	private NesasJsonTestingTool(boolean completeArrDuplication, List<String> sampleJsonTesting) {
@@ -220,6 +220,7 @@ public class NesasJsonTestingTool {
 		String json18 = "{\"amfStatusUri\":\"1234\",\"guamiList\":[{\"plmnId\":{\"mcc\":\"123\",\"mnc\":\"12\"},\"amfId\":\"123\"},{\"plmnId\":{\"mcc\":\"321\",\"mnc\":\"21\"},\"amfId\":\"321\"}]}";
 
 		String json19 = "{\"k1\":\"v1\",\"k2\":{\"k21\":{\"k211\":\"v211\",\"k212\":{\"k2121\":{\"k21211\":\"v21211\",\"k21212\":{\"k212121\":\"v212121\",\"k212122\":{}}}}},\"k22\":\"v22\",\"k23\":{\"k231\":\"v211\",\"k232\":\"v212\"},\"k24\":{\"akey\":\"aval\",\"ckey\":\"cval\",\"bkey\":{\"akey\":\"aval\",\"bkey\":\"bval\",\"ckey\":\"cval\",\"dkey\":\"dkey\"},\"dkey\":\"dkey\",\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}}";
+		String json20 = "{\"k1\":\"v1\",\"k2\":{\"k21\":{\"k211\":\"v211\",\"k212\":{\"k2121\":{\"k21211\":\"v21211\",\"k21212\":{\"k212121\":\"v212121\",\"k212122\":{\"akey\":\"aval\",\"ckey\":\"cval\",\"bkey\":{\"akey\":\"aval\",\"bkey\":\"bval\",\"ckey\":\"cval\",\"dkey\":\"dkey\"},\"dkey\":\"dkey\",\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}}}},\"k22\":\"v22\",\"k23\":{\"k231\":\"v211\",\"k232\":\"v212\"},\"k24\":{\"akey\":\"aval\",\"ckey\":\"cval\",\"bkey\":{\"akey\":\"aval\",\"bkey\":\"bval\",\"ckey\":\"cval\",\"dkey\":\"dkey\"},\"dkey\":\"dkey\",\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}}";
 
 		list.add(json0);
 		list.add(json1);
@@ -240,7 +241,10 @@ public class NesasJsonTestingTool {
 		list.add(json16);
 		list.add(json17);
 		list.add(json18);
+
 		list.add(json19);
+
+		list.add(json20);
 
 		return list;
 	}
