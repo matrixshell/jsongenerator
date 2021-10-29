@@ -16,10 +16,6 @@ public class AppTest {
 	/**
 	 * Rigorous Test :-)
 	 */
-	@Test
-	public void shouldAnswerWithTrue() {
-		assertTrue(true);
-	}
 
 	@Test
 	public void varifyJsonDuplicateTestWithCompleteArrDuplicationFalseParameter() {
@@ -78,15 +74,51 @@ public class AppTest {
 		jsonCorrectDuplicates.add(dup10);
 		Assert.assertEquals(jsonTestDuplicates, jsonCorrectDuplicates);
 	}
-	
+
 	@Test
-	public void varifyJsonDuplicateTestWithCompleteArrDuplicationTrueAndLevelsParameter(){
-		
+	public void varifyJsonDuplicateTestWithCompleteArrDuplicationTrueAndLevelsParameter() {
+		NesasJsonTestingTool jsonDuplicate = new NesasJsonTestingTool(true, 4);
+		String json = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}";
+		List<String> jsonTestDuplicates = jsonDuplicate.jsonDuplicateList(json);
+		String dup0 = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]},\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}}}";
+		String dup1 = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}},\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}";
+		String dup2 = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}},\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}";
+		String dup3 = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}},\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}";
+		String dup4 = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}";
+		String dup5 = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}],\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}";
+		String dup6 = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\",\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}";
+		String dup7 = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\",\"ekarr2\":\"evarr2\"}]}}";
+		List<String> jsonCorrectDuplicates = new ArrayList<String>();
+		jsonCorrectDuplicates.add(dup0);
+		jsonCorrectDuplicates.add(dup1);
+		jsonCorrectDuplicates.add(dup2);
+		jsonCorrectDuplicates.add(dup3);
+		jsonCorrectDuplicates.add(dup4);
+		jsonCorrectDuplicates.add(dup5);
+		jsonCorrectDuplicates.add(dup6);
+		jsonCorrectDuplicates.add(dup7);
+		Assert.assertEquals(jsonTestDuplicates, jsonCorrectDuplicates);
 	}
-	
+
 	@Test
-	public void varifyJsonDuplicateTestWithCompleteArrDuplicationFalseAndLevelsParameter(){
-		
+	public void varifyJsonDuplicateTestWithCompleteArrDuplicationFalseAndLevelsParameter() {
+		NesasJsonTestingTool jsonDuplicate = new NesasJsonTestingTool(false, 4);
+		String json = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}";
+		List<String> jsonTestDuplicates = jsonDuplicate.jsonDuplicateList(json);
+		String dup0 = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]},\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}}}";
+		String dup1 = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}},\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}";
+		String dup2 = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}},\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}";
+		String dup3 = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}},\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}";
+		String dup4 = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}";
+		String dup5 = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}],\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}";
+		List<String> jsonCorrectDuplicates = new ArrayList<String>();
+		jsonCorrectDuplicates.add(dup0);
+		jsonCorrectDuplicates.add(dup1);
+		jsonCorrectDuplicates.add(dup2);
+		jsonCorrectDuplicates.add(dup3);
+		jsonCorrectDuplicates.add(dup4);
+		jsonCorrectDuplicates.add(dup5);
+		Assert.assertEquals(jsonTestDuplicates, jsonCorrectDuplicates);
 	}
 
 }
