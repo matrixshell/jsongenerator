@@ -19,11 +19,14 @@ import com.google.gson.reflect.TypeToken;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Pads a {@link String}.
- * <p>
- * The instances of this class are thread-safe and immutable.
+ * 
+ * A class for creating duplicates of JSON Key-value pair according to the requirements.
+ * 
+ * 
+ * @author Akib Sayyed
+ * @author Muheeb Shekh
+ *
  */
-
 
 @Slf4j
 public class NesasJsonTestingTool {
