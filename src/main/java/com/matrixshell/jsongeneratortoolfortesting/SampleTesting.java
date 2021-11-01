@@ -1,211 +1,14 @@
-package com.matrixshell.jsontestingtool;
+package com.matrixshell.jsongeneratortoolfortesting;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Optional;
-import java.util.Set;
-
-import java.util.Map.Entry;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.reflect.TypeToken;
 
 import lombok.extern.slf4j.Slf4j;
 
-/**
- * 
- * A class for creating duplicates of JSON Key-value pair according to the requirements.
- * 
- * 
- * @author Akib Sayyed
- * @author Muheeb Shekh
- *
- */
-
 @Slf4j
-public class NesasJsonTestingTool {
-	private JsonObject jsonObjectOrg;
-	private List<String> jsonDuplicateList = new ArrayList<String>();
-	private boolean completeArrDuplication;
-	private Optional<Integer> levels;
-	@SuppressWarnings("unused")
-	private List<String> sampleJsonTesting = new ArrayList<String>();
+public class SampleTesting {
 
-	public NesasJsonTestingTool() {
-		completeArrDuplication = false;
-		levels = Optional.empty();
-	}
-
-	public NesasJsonTestingTool(boolean completeArrDuplication) {
-		this.completeArrDuplication = completeArrDuplication;
-		levels = Optional.empty();
-	}
-
-	public NesasJsonTestingTool(Integer levels) {
-		this.levels = Optional.of(levels - 1);
-	}
-
-	public NesasJsonTestingTool(boolean completeArrDuplication, int levels) {
-		this.completeArrDuplication = completeArrDuplication;
-		this.levels = Optional.of(levels - 1);
-	}
-
-	@SuppressWarnings("unused")
-	private NesasJsonTestingTool(boolean completeArrDuplication, List<String> sampleJsonTesting) {
-		this.completeArrDuplication = completeArrDuplication;
-		this.sampleJsonTesting = sampleJsonTesting;
-	}
-
-	private void makeRequest(JsonObject jsonObject, String jsonKey, JsonElement jsonValue, Optional<String> parentKey,
-			List<String> parentKeyList, List<Entry<String, JsonElement>> entries, int start, int end) {
-		String json = createDuplicateKeyValueJson(jsonObject, jsonKey, jsonValue, parentKey, parentKeyList, start, end);
-		this.jsonDuplicateList.add(json);
-	}
-
-	private String createDuplicateKeyValueJson(JsonObject jsonObject, String jsonKey, JsonElement jsonValue,
-			Optional<String> parentKey, List<String> parentKeyList, int start, int end) {
-		JsonObject jsonObjectTestData = new Gson().fromJson(jsonObject, JsonObject.class);
-		jsonObjectTestData.add(jsonKey + " ", jsonValue);
-		String duplicateJsonContent = null;
-		if (parentKey.isEmpty()) {
-			duplicateJsonContent = jsonObjectTestData.toString().replaceAll("\\s", "");
-			return duplicateJsonContent;
-		} else {
-			duplicateJsonContent = jsonObjectTestData.toString().replaceAll("\\s", "");
-			String jsonString = jsonObjectOrg.toString();
-			StringBuffer jsonStringBuffer = new StringBuffer(jsonString);
-			jsonStringBuffer.replace(start, end + 1, duplicateJsonContent);
-			return jsonStringBuffer.toString();
-		}
-
-	}
-
-	private void recursiveJsonObjItr(ListIterator<Entry<String, JsonElement>> listIterator, JsonObject jsonObject,
-			Optional<String> parentKey, List<String> parentKeyList, List<Entry<String, JsonElement>> entries, int start,
-			int end) {
-		if (!listIterator.hasNext())
-			return;
-		Entry<String, JsonElement> entry = listIterator.next();
-		String jsonKey = entry.getKey();
-		JsonElement jsonValue = entry.getValue();
-		if (levels.isPresent() && parentKeyList.size() > levels.get()) {
-			return;
-		}
-		if (jsonValue.isJsonPrimitive()) {
-			makeRequest(jsonObject, jsonKey, jsonValue, parentKey, parentKeyList, entries, start, end);
-		} else if (jsonValue.isJsonObject()) {
-			makeRequest(jsonObject, jsonKey, jsonValue, parentKey, parentKeyList, entries, start, end);
-			parentKey = Optional.of(jsonKey);
-			parentKeyList.add(jsonKey);
-
-			JsonObject childJson = jsonValue.getAsJsonObject();
-
-			List<Entry<String, JsonElement>> entriesList = new ArrayList<Entry<String, JsonElement>>(
-					childJson.entrySet());
-			ListIterator<Entry<String, JsonElement>> entriesIterator = entriesList.listIterator();
-			int resetStart = start;
-			int resetEnd = end;
-			start = start + jsonObject.toString().indexOf("\"" + jsonKey + "\"") + jsonKey.length() + 3;
-			end = start + childJson.toString().length() - 1;
-			recursiveJsonObjItr(entriesIterator, childJson, parentKey, parentKeyList, entries, start, end);
-			start = resetStart;
-			end = resetEnd;
-			parentKeyList.remove(jsonKey);
-			if (parentKeyList.size() <= 0) {
-				parentKey = Optional.empty();
-			} else {
-				parentKey = Optional.of(parentKeyList.get(parentKeyList.size() - 1));
-			}
-
-		} else if (jsonValue.isJsonArray()) {
-			makeRequest(jsonObject, jsonKey, jsonValue, parentKey, parentKeyList, entries, start, end);
-			JsonArray childJsonArray = jsonValue.getAsJsonArray();
-			parentKey = Optional.of(jsonKey);
-			parentKeyList.add(jsonKey);
-			Type listType = new TypeToken<List<JsonElement>>() {
-			}.getType();
-			List<JsonElement> jsonArrayList = new Gson().fromJson(childJsonArray, listType);
-			ListIterator<JsonElement> jsonListIterator = jsonArrayList.listIterator();
-			int resetStart = start;
-			int resetEnd = end;
-			start = start + jsonObject.toString().indexOf("\"" + jsonKey + "\"") + jsonKey.length() + 4;
-			end = start + childJsonArray.toString().length() - 1;
-
-			recursiveJsonArrObjItr(childJsonArray, jsonListIterator, parentKey, parentKeyList, entries, start, end);
-			start = resetStart;
-			end = resetEnd;
-			parentKeyList.remove(jsonKey);
-			if (parentKeyList.size() <= 0) {
-				parentKey = Optional.empty();
-			} else {
-				parentKey = Optional.of(parentKeyList.get(parentKeyList.size() - 1));
-			}
-		}
-		recursiveJsonObjItr(listIterator, jsonObject, parentKey, parentKeyList, entries, start, end);
-	}
-
-	private void recursiveJsonArrObjItr(JsonArray jsonArray, ListIterator<JsonElement> jsonListIterator,
-			Optional<String> superParentKey, List<String> parentKeyList, List<Entry<String, JsonElement>> entries,
-			int start, int end) {
-		if (levels.isPresent() && parentKeyList.size() > levels.get()) {
-			return;
-		}
-		if (!jsonListIterator.hasNext())
-			return;
-		if (!completeArrDuplication && jsonListIterator.nextIndex() > 0) {
-			return;
-		}
-		JsonElement jsonElement = jsonListIterator.next();
-		if (jsonElement.isJsonPrimitive()) {
-			JsonPrimitive jsonPrimitive = jsonElement.getAsJsonPrimitive();
-			start = start + jsonPrimitive.toString().length() + 1;
-		}
-
-		if (jsonElement.isJsonObject()) {
-			JsonObject json = jsonElement.getAsJsonObject();
-			List<Entry<String, JsonElement>> entriesList = new ArrayList<Entry<String, JsonElement>>(json.entrySet());
-			ListIterator<Entry<String, JsonElement>> entriesIterator = entriesList.listIterator();
-			end = start + json.toString().length() - 1;
-			recursiveJsonObjItr(entriesIterator, json, superParentKey, parentKeyList, entries, start, end);
-			start = end + 2;
-		}
-
-		if (jsonElement.isJsonArray()) {
-			JsonArray jsonArray2 = jsonElement.getAsJsonArray();
-			Type listType = new TypeToken<List<JsonElement>>() {
-			}.getType();
-			List<JsonElement> jsonArrayList = new Gson().fromJson(jsonArray2, listType);
-			end = start + jsonArray2.toString().length() - 1;
-			start = start + 1;
-			recursiveJsonArrObjItr(jsonArray2, jsonArrayList.listIterator(), superParentKey, parentKeyList, entries,
-					start, end);
-			start = end + 2;
-		}
-		recursiveJsonArrObjItr(jsonArray, jsonListIterator, superParentKey, parentKeyList, entries, start, end);
-	}
-
-	public List<String> jsonDuplicateList(String json) {
-		jsonObjectOrg = new Gson().fromJson(json, JsonObject.class);
-		String jsonString = jsonObjectOrg.toString();
-		log.info("Input String: {}", jsonString);
-		Optional<String> parentKey = Optional.empty();
-		List<String> parentKeyList = new ArrayList<String>();
-		Set<Entry<String, JsonElement>> entries = jsonObjectOrg.entrySet();
-		List<Entry<String, JsonElement>> entriesList = new ArrayList<Entry<String, JsonElement>>(entries);
-		ListIterator<Entry<String, JsonElement>> entriesIterator = entriesList.listIterator();
-		int start = 0;
-		int end = jsonString.length() - 1;
-		recursiveJsonObjItr(entriesIterator, jsonObjectOrg, parentKey, parentKeyList, entriesList, start, end);
-		return jsonDuplicateList;
-	}
-
-	private List<String> sampleJsonTesting() {
+	private static List<String> sampleJsonTesting() {
 		List<String> list = new ArrayList<String>();
 
 		String json0 = "{\"amfStatusUri\":\"amfStatusUri\",\"amfStatusUri\":\"amfStatusUri\",\"guamiList\":[{\"plmnId\":{\"mnc\":\"mnc\",\"mcc\":\"mcc\"},\"amfId\":\"amfId\"},{\"plmnId\":{\"mnc\":\"mnc\",\"mcc\":\"mcc\"},\"amfId\":\"amfId\"}]}";
@@ -273,10 +76,9 @@ public class NesasJsonTestingTool {
 	}
 
 	public static void main(String[] args) {
-
-		NesasJsonTestingTool tools = new NesasJsonTestingTool(false, 4);
-		String json = tools.sampleJsonTesting().get(22);
+		JsonKeyValueDuplicator tools = new JsonKeyValueDuplicator(false, 4);
+		String json = SampleTesting.sampleJsonTesting().get(22);
 		tools.jsonDuplicateList(json).forEach(str -> log.info(str));
-
 	}
+
 }

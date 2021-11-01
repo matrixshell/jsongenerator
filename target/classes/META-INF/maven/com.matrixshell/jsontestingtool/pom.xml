@@ -9,7 +9,7 @@
 	<artifactId>jsontestingtool</artifactId>
 	<version>0.0.1</version>
 
-	<name>jsontestingtool</name>
+	<name>json-generator-tool-for-testing</name>
 	<url>http://www.matrixshell.com</url>
 	<description>
 		This project is a library for creating duplicates of key and value for testing purpose.
