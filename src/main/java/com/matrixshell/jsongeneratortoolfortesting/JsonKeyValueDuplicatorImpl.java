@@ -23,8 +23,9 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
- * A class for creating list of JSON with duplicate Key-value pair according to
- * the requirements for testing purpose.
+ * Implementation of {@link JsonKeyValueDuplicator}. A class for creating list of
+ * JSON with duplicate Key-value pair according to the requirements for testing
+ * purpose.
  * 
  * @author Akib Sayyed
  * @author Muheeb Shekh

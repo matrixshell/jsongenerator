@@ -4,7 +4,11 @@ import java.util.List;
 
 /**
  * 
- * @author matrix
+ * This interface contains list of method which will be helpful to generate JSON
+ * data for testing purpose
+ * 
+ * @author Akib Sayyed
+ * @author Muheeb Shekh
  *
  */
 public interface JsonKeyValueDuplicator {

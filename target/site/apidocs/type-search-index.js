@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"com.matrixshell.jsongeneratortoolfortesting","l":"JsonKeyValueDuplicator"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"com.matrixshell.jsongeneratortoolfortesting","l":"JsonKeyValueDuplicator"},{"p":"com.matrixshell.jsongeneratortoolfortesting","l":"JsonKeyValueDuplicatorImpl"}]

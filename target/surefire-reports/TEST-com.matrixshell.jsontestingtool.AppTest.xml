@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.matrixshell.jsontestingtool.AppTest" time="0.123" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.matrixshell.jsontestingtool.AppTest" time="0.232" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IN"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/matrix/5g/client/workspace/jsongeneratortoolfortesting/target/surefire/surefirebooter6275317959444859112.jar /home/matrix/5g/client/workspace/jsongeneratortoolfortesting/target/surefire 2021-11-02T16-54-21_509-jvmRun1 surefire12935812909222371155tmp surefire_05785081066798988625tmp"/>
+    <property name="sun.java.command" value="/home/matrix/5g/client/workspace/jsongeneratortoolfortesting/target/surefire/surefirebooter6464647084985035389.jar /home/matrix/5g/client/workspace/jsongeneratortoolfortesting/target/surefire 2021-11-08T12-08-44_548-jvmRun1 surefire5599130063464765658tmp surefire_08241257799917654632tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/matrix/5g/client/workspace/jsongeneratortoolfortesting/target/test-classes:/home/matrix/5g/client/workspace/jsongeneratortoolfortesting/target/classes:/home/matrix/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/matrix/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/matrix/.m2/repository/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar:/home/matrix/.m2/repository/org/slf4j/slf4j-api/1.7.32/slf4j-api-1.7.32.jar:/home/matrix/.m2/repository/org/slf4j/slf4j-log4j12/1.7.25/slf4j-log4j12-1.7.25.jar:/home/matrix/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar:/home/matrix/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -32,7 +32,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/matrix/5g/client/workspace/jsongeneratortoolfortesting/target/surefire/surefirebooter6275317959444859112.jar"/>
+    <property name="surefire.real.class.path" value="/home/matrix/5g/client/workspace/jsongeneratortoolfortesting/target/surefire/surefirebooter6464647084985035389.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.11+9-Ubuntu-0ubuntu2.20.04"/>
     <property name="user.name" value="matrix"/>
@@ -57,9 +57,9 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="basicTestingFrom" classname="com.matrixshell.jsontestingtool.AppTest" time="0.038"/>
+  <testcase name="basicTestingFrom" classname="com.matrixshell.jsontestingtool.AppTest" time="0.055"/>
   <testcase name="varifyJsonDuplicateTestWithCompleteArrDuplicationFalseParameter" classname="com.matrixshell.jsontestingtool.AppTest" time="0.001"/>
-  <testcase name="varifyJsonDuplicateTestWithCompleteArrDuplicationTrueParameter" classname="com.matrixshell.jsontestingtool.AppTest" time="0.001"/>
-  <testcase name="varifyJsonDuplicateTestWithCompleteArrDuplicationTrueAndLevelsParameter" classname="com.matrixshell.jsontestingtool.AppTest" time="0.001"/>
-  <testcase name="varifyJsonDuplicateTestWithCompleteArrDuplicationFalseAndLevelsParameter" classname="com.matrixshell.jsontestingtool.AppTest" time="0.001"/>
+  <testcase name="varifyJsonDuplicateTestWithCompleteArrDuplicationTrueParameter" classname="com.matrixshell.jsontestingtool.AppTest" time="0.002"/>
+  <testcase name="varifyJsonDuplicateTestWithCompleteArrDuplicationTrueAndLevelsParameter" classname="com.matrixshell.jsontestingtool.AppTest" time="0.002"/>
+  <testcase name="varifyJsonDuplicateTestWithCompleteArrDuplicationFalseAndLevelsParameter" classname="com.matrixshell.jsontestingtool.AppTest" time="0.002"/>
 </testsuite>
