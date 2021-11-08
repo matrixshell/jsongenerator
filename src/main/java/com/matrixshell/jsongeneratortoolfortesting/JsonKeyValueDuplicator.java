@@ -1,3 +1,6 @@
+/**
+ * This library is created to generate JSON for testing purposes.
+ */
 package com.matrixshell.jsongeneratortoolfortesting;
 
 import java.lang.reflect.Type;
@@ -22,6 +25,8 @@ import lombok.extern.slf4j.Slf4j;
  * 
  * A class for creating list of duplicate Key-value pair in JSON according to
  * the requirements for testing purpose.
+ * 
+ * @apiNote
  * 
  * @author Akib Sayyed
  * @author Muheeb Shekh
@@ -88,7 +93,7 @@ public class JsonKeyValueDuplicator {
 	 * @param levels : This parameter to create duplicate keys values till a limit
 	 *               for nested JSON Key Value.
 	 */
-	public JsonKeyValueDuplicator(Integer levels) {
+	public JsonKeyValueDuplicator(int levels) {
 		this.levels = Optional.of(levels - 1);
 	}
 
