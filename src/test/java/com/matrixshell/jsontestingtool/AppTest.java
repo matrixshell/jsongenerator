@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.matrixshell.jsongeneratortoolfortesting.JsonKeyValueDuplicator;
+import com.matrixshell.jsongeneratortoolfortesting.JsonKeyValueDuplicatorImpl;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -89,7 +89,7 @@ public class AppTest {
 
 	@Test
 	public void varifyJsonDuplicateTestWithCompleteArrDuplicationFalseParameter() {
-		JsonKeyValueDuplicator jsonDuplicate = new JsonKeyValueDuplicator(false);
+		JsonKeyValueDuplicatorImpl jsonDuplicate = new JsonKeyValueDuplicatorImpl(false);
 		String json = "{\"akey\":\"aval\",\"ckey\":\"cval\",\"bkey\":{\"akey\":\"aval\",\"bkey\":\"bval\",\"ckey\":\"cval\",\"dkey\":\"dkey\"},\"dkey\":\"dkey\",\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}";
 		List<String> jsonTestDuplicates = jsonDuplicate.jsonDuplicateList(json);
 		String dup0 = "{\"akey\":\"aval\",\"ckey\":\"cval\",\"bkey\":{\"akey\":\"aval\",\"bkey\":\"bval\",\"ckey\":\"cval\",\"dkey\":\"dkey\"},\"dkey\":\"dkey\",\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}],\"akey\":\"aval\"}";
@@ -116,7 +116,7 @@ public class AppTest {
 
 	@Test
 	public void varifyJsonDuplicateTestWithCompleteArrDuplicationTrueParameter() {
-		JsonKeyValueDuplicator jsonDuplicate = new JsonKeyValueDuplicator(true);
+		JsonKeyValueDuplicatorImpl jsonDuplicate = new JsonKeyValueDuplicatorImpl(true);
 		String json = "{\"akey\":\"aval\",\"ckey\":\"cval\",\"bkey\":{\"akey\":\"aval\",\"bkey\":\"bval\",\"ckey\":\"cval\",\"dkey\":\"dkey\"},\"dkey\":\"dkey\",\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}";
 		List<String> jsonTestDuplicates = jsonDuplicate.jsonDuplicateList(json);
 		String dup0 = "{\"akey\":\"aval\",\"ckey\":\"cval\",\"bkey\":{\"akey\":\"aval\",\"bkey\":\"bval\",\"ckey\":\"cval\",\"dkey\":\"dkey\"},\"dkey\":\"dkey\",\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}],\"akey\":\"aval\"}";
@@ -147,7 +147,7 @@ public class AppTest {
 
 	@Test
 	public void varifyJsonDuplicateTestWithCompleteArrDuplicationTrueAndLevelsParameter() {
-		JsonKeyValueDuplicator jsonDuplicate = new JsonKeyValueDuplicator(true, 4);
+		JsonKeyValueDuplicatorImpl jsonDuplicate = new JsonKeyValueDuplicatorImpl(true, 4);
 		String json = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}";
 		List<String> jsonTestDuplicates = jsonDuplicate.jsonDuplicateList(json);
 		String dup0 = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]},\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}}}";
@@ -172,7 +172,7 @@ public class AppTest {
 
 	@Test
 	public void varifyJsonDuplicateTestWithCompleteArrDuplicationFalseAndLevelsParameter() {
-		JsonKeyValueDuplicator jsonDuplicate = new JsonKeyValueDuplicator(false, 4);
+		JsonKeyValueDuplicatorImpl jsonDuplicate = new JsonKeyValueDuplicatorImpl(false, 4);
 		String json = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]}}";
 		List<String> jsonTestDuplicates = jsonDuplicate.jsonDuplicateList(json);
 		String dup0 = "{\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}},\"keya\":{\"ekey\":[\"\",{},[\"\",[],{\"newekarr2\":\"newevarr2\"}],{\"ekarr2\":\"evarr2\"}]},\"key1\":{\"key2\":{\"key3\":{\"key4\":{\"key5\":{\"key6\":{\"key7\":{\"key8\":{\"key9\":{\"key10\":{}}}}}}}}}}}";
@@ -193,7 +193,7 @@ public class AppTest {
 
 	@Test
 	public void basicTestingFrom() {
-		JsonKeyValueDuplicator tools = new JsonKeyValueDuplicator(false, 4);
+		JsonKeyValueDuplicatorImpl tools = new JsonKeyValueDuplicatorImpl(false, 4);
 		String json = AppTest.sampleJsonList().get(22);
 		tools.jsonDuplicateList(json).forEach(str -> log.info(str));
 	}
