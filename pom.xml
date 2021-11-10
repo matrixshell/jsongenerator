@@ -181,23 +181,26 @@
 						</execution>
 					</executions>
 				</plugin>
+				<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
+					<version>3.2.0</version> <executions> <execution> <id>attach-javadocs</id> 
+					<phase>site</phase> <goals> <goal>jar</goal> </goals> </execution> </executions> 
+					</plugin> -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-source-plugin</artifactId>
-					<version>3.2.1</version>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>3.2.0</version>
 					<executions>
 						<execution>
-							<id>attach-sources</id>
+							<id>attach-javadocs</id>
 							<goals>
-								<goal>jar-no-fork</goal>
+								<goal>jar</goal>
 							</goals>
 						</execution>
 					</executions>
+					<configuration>
+						<javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+					</configuration>
 				</plugin>
-
-
-
-
 				<!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
