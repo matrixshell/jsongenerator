@@ -58,7 +58,6 @@
 								</goals>
 							</execution>
 						</executions>
-
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -160,6 +159,10 @@
 							<goals>
 								<goal>sign</goal>
 							</goals>
+						<configuration>
+							<keyname>0xA16E8F64</keyname>
+							<passphraseServerId>0xA16E8F64</passphraseServerId>
+						</configuration>		
 						</execution>
 					</executions>
 
@@ -177,10 +180,6 @@
 							</goals>
 						</execution>
 					</executions>
-					<configuration>
-						<javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
-
-					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
