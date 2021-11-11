@@ -8,12 +8,9 @@ import org.junit.Test;
 
 import com.matrixshell.jsongeneratortoolfortesting.JsonKeyValueDuplicatorImpl;
 
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * Unit test for simple App.
  */
-@Slf4j
 public class AppTest {
 
 	private static List<String> sampleJsonList() {
@@ -195,6 +192,6 @@ public class AppTest {
 	public void basicTestingFrom() {
 		JsonKeyValueDuplicatorImpl tools = new JsonKeyValueDuplicatorImpl(false, 4);
 		String json = AppTest.sampleJsonList().get(22);
-		tools.jsonDuplicateList(json).forEach(str -> log.info(str));
+		tools.jsonDuplicateList(json);
 	}
 }
