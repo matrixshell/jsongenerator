@@ -257,6 +257,12 @@
 	<developers>
 		<developer>
 			<name>Muheeb Shekh</name>
+			<email>muheeb.shaikh@matrixshell.com</email>
+			<organization>Matrix-Shell</organization>
+			<organizationUrl>http://www.matrixshell.com</organizationUrl>
+		</developer>
+		<developer>
+			<name>Muheeb Shekh</name>
 			<email>muhib.shaikh313@gmail.com</email>
 			<organization>Matrix-Shell</organization>
 			<organizationUrl>http://www.matrixshell.com</organizationUrl>
