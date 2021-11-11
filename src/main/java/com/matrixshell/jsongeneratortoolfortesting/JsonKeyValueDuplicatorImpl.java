@@ -19,8 +19,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.reflect.TypeToken;
 
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * 
  * Implementation of {@link JsonKeyValueDuplicator}. A class for creating list of
@@ -32,7 +30,6 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 
-@Slf4j
 public class JsonKeyValueDuplicatorImpl implements JsonKeyValueDuplicator {
 
 	/**
@@ -276,7 +273,6 @@ public class JsonKeyValueDuplicatorImpl implements JsonKeyValueDuplicator {
 	public List<String> jsonDuplicateList(String jsonStr) {
 		jsonObjectOrg = new Gson().fromJson(jsonStr, JsonObject.class);
 		String jsonString = jsonObjectOrg.toString();
-		log.info("Input String: {}", jsonString);
 		Optional<String> parentKey = Optional.empty();
 		List<String> parentKeyList = new ArrayList<String>();
 		Set<Entry<String, JsonElement>> entries = jsonObjectOrg.entrySet();
