@@ -270,9 +270,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:git@github.com:hbelmiro/demo-library.git</connection>
-		<developerConnection>scm:git:ssh://github.com:hbelmiro/demo-library.git</developerConnection>
-		<url>https://github.com/hbelmiro/demo-library/tree/master</url>
+		<connection>scm:git:git@github.com:matrixshell/jsongenerator.git</connection>
+		<developerConnection>scm:git:ssh://github.com:matrixshell/jsongenerator.git</developerConnection>
+		<url>https://github.com/matrixshell/jsongenerator/tree/master</url>
 	</scm>
 
 	<distributionManagement>
